@@ -1,0 +1,133 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'ngmy/vim-rubocop'
+Plugin 'uplus/deoplete-solargraph'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Plugin 'jnurmine/Zenburn'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-commentary'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'elixir-editors/vim-elixir'
+Plugin 'mhinz/vim-mix-format'
+Plugin 'slashmili/alchemist.vim'
+Plugin 'ryanoasis/vim-devicons'
+Plugin 'honza/vim-snippets'
+
+let python_highlight_all=1
+call vundle#end()   
+
+let g:elite_mode=1
+
+:set number relativenumber
+
+set runtimepath+=~/.vim/ultisnips_rep
+
+filetype plugin indent on
+set splitbelow
+set splitright
+set noswapfile
+set columns=80
+set ruler
+
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
+
+set tabstop=2 shiftwidth=2 softtabstop=2
+
+syntax on
+
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>
+
+let NERDTreeIgnore=['\.pyc$', '\~$']
+
+set wildignore+=*/tmp/*,*_site/*,*build/*,*venv*,*bin/*,*db/*,*.pyc,*node_module*,*dist/
+let g:ctrlp_custom_ignore = '\v[\/]\.(hg|svn|so|swp|zip|pyc)$'
+
+set encoding=utf-8
+
+map ,gawp :!git add . && git commit -m 'WIP' && git push origin master<cr>
+map ,gaw :!git add . && git commit -m 'WIP'<cr>
+map ,gw :!git commit -am 'WIP'<cr>
+map ,j :%!jq '.'<cr>
+nmap <silent> ./ :nohlsearch<CR>
+
+if has('gui_running')
+  set background=dark
+  colorscheme solarized
+else
+  colorscheme zenburn
+endif
+if exists('g:loaded_webdevicons')
+  call webdevicons#refresh()
+endif
+
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
+
+set guifont=Knack_Regular_Nerd_Font_Complete:14
+set encoding=utf8
+let g:airline_powerline_fonts = 1
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" Elixir Tagbar Configuration
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'f:functions',
+        \ 'functions:functions',
+        \ 'c:callbacks',
+        \ 'd:delegates',
+        \ 'e:exceptions',
+        \ 'i:implementations',
+        \ 'a:macros',
+        \ 'o:operators',
+        \ 'm:modules',
+        \ 'p:protocols',
+        \ 'r:records',
+        \ 't:tests'
+    \ ]
+    \ }
+
+
+let g:vimrubocop_keymap = 0
+nmap <Leader>r :RuboCop<CR>

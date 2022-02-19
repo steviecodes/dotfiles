@@ -1,0 +1,12 @@
+#!/bin/sh -f
+
+bin_dir="$HOME/bin/"
+
+if [ ! -d $bin_dir ] 
+then
+    echo "Directory ${bin_dir} does not exist... Creating..."
+    mkdir bin_dir
+fi
+
+echo "Copying files to relevant places..."
+cp dotfiles/vimrc ~/.vimrc
