@@ -18,7 +18,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
-Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-commentary'
@@ -35,8 +34,8 @@ call vundle#end()
 let g:elite_mode=1
 
 :set number relativenumber
-
-set runtimepath+=~/.vim/ultisnips_rep
+ 
+let g:snipMate = { 'snippet_version' : 1 }
 
 filetype plugin indent on
 set splitbelow

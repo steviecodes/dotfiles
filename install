@@ -10,3 +10,4 @@ fi
 
 echo "Copying files to relevant places..."
 cp dotfiles/vimrc ~/.vimrc
+ln -s $PWD/bin/give_me_a_readme $HOME/bin/give_me_a_readme
