@@ -1,0 +1,5 @@
+#/bin/sh -f
+
+GISTDIR="/tmp/$$"
+git clone https://gist.github.com/5669227.git $GISTDIR
+mv $GISTDIR/README.md $1 
