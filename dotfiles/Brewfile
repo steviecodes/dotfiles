@@ -1,0 +1,4 @@
+brew 'tig'
+brew 'wget'
+brew 'tree'
+brew 'tmux'
